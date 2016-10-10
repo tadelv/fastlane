@@ -196,7 +196,8 @@ module Frameit
       top_space = vertical_padding
       left_space = (background.width / 2.0 - sum_width / 2.0).round
 
-      self.top_space_above_device += title.height + vertical_padding
+      title_padding = [title.height, fetch_config['title']['padding'] ||= 0].max
+      self.top_space_above_device += title_padding + vertical_padding
 
       # First, put the keyword on top of the screenshot, if we have one
       if keyword
@@ -217,7 +218,7 @@ module Frameit
     end
 
     def actual_font_size
-      [@image.width / 10.0].max.round
+      fetch_config["title"]["font_size"] ||= [@image.width / 10.0].max.round
     end
 
     # The space between the keyword and the title

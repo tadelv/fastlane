@@ -18,7 +18,7 @@ module Frameit
     # Example: iPad-Pro-Space-Gray-vertical.png
     class Type2Transform < FilenameTransform
       def transform(color, orientation)
-        fixed_color = color == 'SpaceGray' ? "Space-Gray" : "Silver"
+        fixed_color = color == Frameit::Color::BLACK ? "Jet-Black" : "Silver"
         fixed_orientation = orientation == 'Horz' ? 'horizontal' : 'vertical'
         "#{@device_name}-#{fixed_color}-#{fixed_orientation}"
       end
@@ -28,7 +28,7 @@ module Frameit
     # Note that 'vertical' is implied
     class Type3Transform < FilenameTransform
       def transform(color, orientation)
-        fixed_color = color == 'SpaceGray' ? "Space-Gray" : "Silver"
+        fixed_color = color == Frameit::Color::BLACK ? "Space-Gray" : "Silver"
         filename = "#{@device_name}-#{fixed_color}"
         if orientation == 'Horz'
           "#{filename}-horizontal"
@@ -42,8 +42,8 @@ module Frameit
       'iPhone-SE' => Type3Transform.new('iPhone-SE'),
       'iPad-Pro' => Type2Transform.new('iPad-Pro'),
       'iPad-mini' => Type2Transform.new('iPad-mini'),
-      'iPhone-6s' => Type2Transform.new('iPhone-6s'),
-      'iPhone-6s-Plus' => Type2Transform.new('iPhone-6s-Plus')
+      'iPhone-7' => Type2Transform.new('iPhone-7'),
+      'iPhone-7-Plus' => Type2Transform.new('iPhone-7-Plus')
     }
 
     # This will detect the screen size and choose the correct template

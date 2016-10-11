@@ -27,7 +27,11 @@ module Frameit
                            optional: true,
                            is_string: false,
                            description: "use iPhone 5s instead of iPhone SE frames",
-                           default_value: false)
+                           default_value: false),
+       FastlaneCore::ConfigItem.new(key: :convert_strings_file,
+                                     description: "Convert .strings files (they must be in UTF-16BE, otherwise they should be UTF-8)",
+                                     optional: true,
+                                     is_string: false)
       ]
     end
   end

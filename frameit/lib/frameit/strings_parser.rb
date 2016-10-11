@@ -7,8 +7,13 @@ module Frameit
 
       result = {}
 
-      # A .strings file is UTF-16 encoded. We only want to deal with UTF-8
-      content = `iconv -f UTF-16 -t UTF-8 '#{path}'`
+      if Frameit.config[:convert_strings_file]
+        # A .strings file is UTF-16 encoded. We only want to deal with UTF-8
+        content = `iconv -f UTF-16 -t UTF-8 '#{path}'`
+      else
+        content = File.read(path)
+      end
+
 
       content.split("\n").each_with_index do |line, index|
         begin

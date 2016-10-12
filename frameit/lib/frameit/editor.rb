@@ -193,11 +193,10 @@ module Frameit
       end
 
       vertical_padding = vertical_frame_padding
-      top_space = vertical_padding
+      top_space = [(vertical_padding - title.height) / 2, 10].max
       left_space = (background.width / 2.0 - sum_width / 2.0).round
 
-      title_padding = [title.height, fetch_config['title']['padding'] ||= 0].max
-      self.top_space_above_device += title_padding + vertical_padding
+      self.top_space_above_device = vertical_padding
 
       # First, put the keyword on top of the screenshot, if we have one
       if keyword
@@ -254,7 +253,7 @@ module Frameit
         title_image.combine_options do |i|
           i.font current_font if current_font
           i.gravity "Center"
-          i.pointsize actual_font_size
+          i.pointsize scale_padding(actual_font_size)
           i.draw "text 0,0 '#{text}'"
           i.interline_spacing interline_spacing if interline_spacing
           i.fill fetch_config[key.to_s]['color']

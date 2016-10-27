@@ -14,7 +14,6 @@ module Frameit
         content = File.read(path)
       end
 
-
       content.split("\n").each_with_index do |line, index|
         begin
           # We don't care about comments and empty lines

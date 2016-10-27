@@ -1,11 +1,13 @@
 module Frameit
   module Color
-    BLACK = "JetBlack"
-    SILVER = "Slvr"
+    BLACK = "Space Gray"
+    SILVER = "Silver"
+    ROSE_GOLD = "Rose Gold"
+    GOLD = "Gold"
   end
 
   module Orientation
-    PORTRAIT = "Vert"
-    LANDSCAPE = "Horz"
+    PORTRAIT = "PORTRAIT"
+    LANDSCAPE = "LANDSCAPE"
   end
 end
